@@ -3,4 +3,5 @@ rootProject.name = 'msa-template'
 include 'core'
 include 'inventory-service'
 include 'order-service'
+include 'gateway'
 

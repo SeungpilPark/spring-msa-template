@@ -3,6 +3,7 @@ package com.msa.template.order.config.web;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
+import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -17,8 +18,8 @@ public class OpenApiConfig {
 
 		return new OpenAPI()
 			.info(new Info()
-				.title("메가트리 Front API")
-				.description("메가트리 Front API 명세서(스펙)")
+				.title("주문 Front API")
+				.description("주문 Front API 명세서(스펙)")
 				.version("1.0.0"))
 			.components(new Components()
 //				.addSecuritySchemes("bearer-key",
@@ -27,5 +28,24 @@ public class OpenApiConfig {
 //						.scheme("bearer")
 //						.bearerFormat("JWT"))
 			);
+	}
+
+	@Bean
+	public GroupedOpenApi groupD2X() {
+		return GroupedOpenApi.builder()
+			.group("D2X")
+			.pathsToMatch("/api/order/**")
+			.pathsToExclude(
+				"/api/order/delete/**",
+				"/api/order/update/**")
+			.build();
+	}
+
+	@Bean
+	public GroupedOpenApi groupD2C() {
+		return GroupedOpenApi.builder()
+			.group("D2C")
+			.pathsToMatch("/api/order/**")
+			.build();
 	}
 }

@@ -1,0 +1,12 @@
+spring:
+  profiles:
+    active: local
+    group:
+      local:
+        - gateway-local
+      develop:
+        - gateway-develop
+      test:
+        - gateway-test
+    include:
+      - gateway
